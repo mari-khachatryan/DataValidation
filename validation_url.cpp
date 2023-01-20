@@ -2,16 +2,20 @@
 #include <string>
 
 bool is_valid_url(const std::string& url) {
+	const unsigned start = 0;
+	const unsigned start_true_pos1 = 7;
+	const unsigned start_true_pos2 = 8;
     
-    if(!(url.substr(0, 7) == "http://" || url.substr(0, 8) == "https://")) {
+    if(!(url.substr(start, start_true_pos1) == "http://"
+	 || url.substr(start, start_true_pos2) == "https://")) {
         return 0;
     }
     
     if(url.find("www") == std::string::npos) {
         return 0;
     } else {
-        const int www_true_pos1 = 8;
-        const int www_true_pos2 = 9;
+        const unsigned www_true_pos1 = 8;
+        const unsigned www_true_pos2 = 9;
         if(!(url.find("www") == www_true_pos1 || url.find("www") == www_true_pos2)) {
             return 0;
         }
@@ -20,8 +24,8 @@ bool is_valid_url(const std::string& url) {
     if (url.find('.') == std::string::npos) {
         return 0;    
     } else {
-        const int dot_true_pos1 = 11;
-        const int dot_true_pos2 = 12;
+        const unsigned dot_true_pos1 = 11;
+        const unsigned dot_true_pos2 = 12;
         if(!(url.find('.') == dot_true_pos1 || url.find('.') == dot_true_pos2)) {
             return 0;
         }
